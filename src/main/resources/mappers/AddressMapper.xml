@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC  
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+   
+<mapper namespace="com.fh.shop.api.address.mapper.IAddressMapper">
+
+    <select id="findAddress" parameterType="long" resultType="com.fh.shop.api.address.po.Address">
+      select ma.id,addressName,Phone,concat(addressName,'  ',a1.areaName,a2.areaName,a3.areaName,'  ',address) "allAddressInfo",
+       concat(a1.areaName,"--",a2.areaName,"--",a3.areaName) "allAreas"
+       from t_address ma
+        left join t_area a1 on ma.area1 = a1.id
+        left join t_area a2 on ma.area2 = a2.id
+        left join t_area a3 on ma.area3 = a3.id
+      where memberId = #{value}
+  </select>
+
+    <select id="queryAddressById" parameterType="long" resultType="com.fh.shop.api.address.po.Address">
+      select ma.id,addressName,Phone,concat(addressName,'  ',a1.areaName,a2.areaName,a3.areaName,'  ',address) "allAddressInfo",
+       concat(a1.areaName,"--",a2.areaName,"--",a3.areaName) "allAreas"
+       from t_address ma
+        left join t_area a1 on ma.area1 = a1.id
+        left join t_area a2 on ma.area2 = a2.id
+        left join t_area a3 on ma.area3 = a3.id
+      where ma.id = #{id}
+  </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>

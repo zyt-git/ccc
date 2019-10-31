@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC  
+    "-//mybatis.org//DTD Mapper 3.0//EN"  
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd"> 
+   
+<mapper namespace="com.fh.shop.api.area.mapper.IAreaMapper">
+
+
+
+
+
+
+    <select id="queryAreaPid" parameterType="long" resultType="com.fh.shop.api.area.po.Area">
+        select id,areaname,pid from t_area where pid=#{id}
+    </select>
+
+
+<select id="queryAreaNames" resultType="string" parameterType="long">
+    select concat(a1.areaname,"-->",a2.areaname,"-->",a3.areaname) areanames from t_user u
+    left join t_area a1 on a1.id=u.area1
+    left join t_area a2 on a2.id=u.area2
+    left join t_area a3 on a3.id=u.area3
+     where u.id=#{id}
+</select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</mapper>
